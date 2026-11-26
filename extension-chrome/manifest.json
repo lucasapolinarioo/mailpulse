@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "MailPulse",
+  "version": "1.0.0",
+  "description": "Free, self-hosted email open and link tracking for Gmail on Chrome.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    },
+    "default_title": "MailPulse",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "notifications",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://mailpulse.shardweb.app/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content/gmail.js"],
+      "css": ["content/gmail.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

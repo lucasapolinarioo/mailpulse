@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Acompanhe a leitura e os cliques dos seus e-mails enviados no Gmail." />
+  <title>MailPulse</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <rect x="2.5" y="5" width="19" height="14" stroke="currentColor" stroke-width="1.6" opacity="0.55" />
+          <path d="M3 6l9 6.5L21 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" opacity="0.55" />
+          <path d="M2 13.5h4.5l3-7.5 3.5 11.5 3-6h5" stroke="var(--color-accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="21" cy="11.5" r="1.6" fill="var(--color-accent)" />
+        </svg>
+      </span>
+      <div class="brand-copy">
+        <h1 class="brand-title">MailPulse</h1>
+        <p class="brand-sub">Registro de leitura</p>
+      </div>
+    </div>
+
+    <button id="refreshBtn" class="btn-icon" type="button" title="Atualizar registros" aria-label="Atualizar registros">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20 12a8 8 0 1 1-2.34-5.66L20 8.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M20 3.5v5h-5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </header>
+
+  <nav class="groove-nav" aria-label="Seções">
+    <button class="groove-tab active" type="button" data-tab="tracks">Enviados</button>
+    <button class="groove-tab" type="button" data-tab="settings">Preferências</button>
+  </nav>
+
+  <main class="desk-main">
+    <section id="tab-tracks" class="panel active">
+      <div id="summaryBar" class="summary-strip hidden" aria-live="polite">
+        <div class="summary-cell">
+          <span class="summary-label">Enviados</span>
+          <span id="totalCount" class="summary-value fig">0</span>
+        </div>
+        <div class="summary-cell">
+          <span class="summary-label">Abertos</span>
+          <span id="openedCount" class="summary-value summary-value--paid fig">0</span>
+        </div>
+      </div>
+
+      <ul id="tracksList" class="records-list"></ul>
+
+      <p id="emptyState" class="empty-note hidden">
+        Nenhum envio registrado ainda. Use o botão MailPulse na janela de composição do Gmail.
+      </p>
+    </section>
+
+    <section id="tab-settings" class="panel">
+      <form id="settingsForm" class="prefs-form">
+        <label class="pref-row">
+          <input id="trackOpensByDefault" type="checkbox" />
+          <span class="pref-copy">
+            <span class="pref-title">Rastrear aberturas por padrão</span>
+            <span class="pref-desc">Ativa o registro em novos e-mails no Gmail</span>
+          </span>
+        </label>
+
+        <label class="pref-row">
+          <input id="trackLinksByDefault" type="checkbox" />
+          <span class="pref-copy">
+            <span class="pref-title">Rastrear cliques em links</span>
+            <span class="pref-desc">Assina links externos para contar acessos</span>
+          </span>
+        </label>
+
+        <label class="pref-row">
+          <input id="desktopNotifications" type="checkbox" />
+          <span class="pref-copy">
+            <span class="pref-title">Alertas na área de trabalho</span>
+            <span class="pref-desc">Notifica quando um destinatário abre o envio</span>
+          </span>
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-ink">Salvar preferências</button>
+        </div>
+        <p id="settingsFeedback" class="feedback" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>
