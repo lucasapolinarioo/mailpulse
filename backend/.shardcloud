@@ -1,7 +1,0 @@
-DISPLAY_NAME=MailPulse
-DESCRIPTION=Self-hosted email open and link tracking backend for MailPulse
-MAIN=src/server.js
-LANGUAGE=node
-MEMORY=512
-VERSION=recommended
-SUBDOMAIN=mailpulse

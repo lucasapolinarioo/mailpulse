@@ -1,4 +1,5 @@
 node_modules/
-backend/data/
+backend/
+mailpulse-backend.zip
 .env
 *.log
